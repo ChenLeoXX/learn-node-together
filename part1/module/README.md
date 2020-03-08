@@ -72,3 +72,18 @@ const wrapper = ['(function (exports, require, module, __filename, __dirname) { 
 - commonjs的模块加载顺序为阻塞式，执行时遇到require会进入该模块中执行该模块的逻辑，直到该模块的逻辑执行完毕，在返回到上一级继续执行下面的代码逻辑。
 - 当模块第一次被require后会再require上的cache字段上储存第一次exports的结果，在遇到require相同的模块时会直接取该字段的值，并不会再进入该模块执行。
 - 当遇到两个模块相互引用的时候会取require.cache上面第一次该模块exports出的结果，并不会产生无限循环的可能，也就避免了代码一些性能上的问题，如一直监听某个时间的代码被无限执行。
+### module.exports 和 exports的关系
+
+exports 是 module.exports 的一个引用，如果同时存在exports和module.exports，最终导出的是module.exports，所以尽量都使用module.exports来定义模块导出内容，否则可能产生exports上定义后，被module.exports 赋值所覆盖。
+
+```javascript
+// module.js
+exports.myExports = 'myExport';
+module.exports = {
+  moduleExports: 'export'
+}
+// index.js
+const m1 = require('./module.js');
+console.log(m1.myExports) //undefined
+console.log(m1.moduleExports) // 'export'
+```
