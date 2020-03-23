@@ -1,0 +1,20 @@
+{
+  "name": "learn-node-together",
+  "version": "1.0.0",
+  "description": "一起学node",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ChenLeoXX/learn-node-together.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ChenLeoXX/learn-node-together/issues"
+  },
+  "homepage": "https://github.com/ChenLeoXX/learn-node-together#readme"
+}
